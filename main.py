@@ -19,7 +19,7 @@ app=FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, use specific domains
+    allow_origins=["*"],  
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
@@ -57,7 +57,7 @@ def predict_premium(data: UserInput):
             ]
         )
 
-        prediction_value = float(model.predict(input_df)[0])  # <-- FIXED HERE
+        prediction_value = float(model.predict(input_df)[0])  
 
         return JSONResponse(
             status_code=200,
@@ -65,3 +65,4 @@ def predict_premium(data: UserInput):
         )
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
+
